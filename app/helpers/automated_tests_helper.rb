@@ -177,6 +177,8 @@ module AutomatedTestsHelper
     end
 
     result, status = launch_test(@test_server_id, @assignment, @repo_dir, call_on)
+    puts "Result is..."
+    puts result
     
     if !status
       # TODO: handle this error better
@@ -227,41 +229,52 @@ module AutomatedTestsHelper
     run_dir = MarkusConfigurator.markus_ate_test_run_directory
 
     # Delete the test run directory to remove files from previous test
-    stdout, stderr, status = Open3.capture3("ssh #{server} rm -rf #{run_dir}")
+    ssh = "ssh -i /home/nick/.ssh/id_rsa_blank "
+    scp = "scp -i /home/nick/.ssh/id_rsa_blank "
+  puts "#{ssh} #{server} rm -rf #{run_dir}"
+    stdout, stderr, status = Open3.capture3("#{ssh} #{server} rm -rf #{run_dir}")
     if !(status.success?)
       return [stderr, false]
     end
 
     # Recreate the test run directory
-    stdout, stderr, status = Open3.capture3("ssh #{server} mkdir #{run_dir}")
+  puts "#{ssh} #{server} mkdir #{run_dir}"
+    stdout, stderr, status = Open3.capture3("#{ssh} #{server} mkdir #{run_dir}")
     if !(status.success?)
       return [stderr, false]
     end
 
     # Securely copy source files, test files and test runner script to run_dir
-    stdout, stderr, status = Open3.capture3("scp -p -r '#{src_dir}'/* #{server}:#{run_dir}")
+  puts "#{scp} -p -r #{src_dir}/* #{server}:#{run_dir}"
+    stdout, stderr, status = Open3.capture3("#{scp} -p -r #{src_dir}/* #{server}:#{run_dir}")
     if !(status.success?)
       return [stderr, false]
     end
-    stdout, stderr, status = Open3.capture3("scp -p -r '#{test_dir}'/* #{server}:#{run_dir}")
+
+  puts "#{scp} -p -r #{test_dir}/* #{server}:#{run_dir}"
+    stdout, stderr, status = Open3.capture3("#{scp} -p -r #{test_dir}/* #{server}:#{run_dir}")
     if !(status.success?)
       return [stderr, false]
     end
-    stdout, stderr, status = Open3.capture3("ssh #{server} cp #{test_runner} #{run_dir}")
+
+  puts "#{ssh} #{server} cp #{test_runner} #{run_dir}"
+    stdout, stderr, status = Open3.capture3("#{ssh} #{server} cp #{test_runner} #{run_dir}")
     if !(status.success?)
       return [stderr, false]
     end
 
     # Find the test scripts for this test run, and parse the argument list
     list_run_scripts = scripts_to_run(assignment, call_on)
+  puts "list_run_scripts = #{list_run_scripts}"
     arg_list = ""
     list_run_scripts.each do |script|
-      arg_list = arg_list + "#{script.script_name.gsub(/\s/, "\\ ")} #{script.halts_testing} "
+      arg_list = arg_list + "#{script.script_name} #{script.halts_testing} "
     end
     
     # Run script
     test_runner_name = File.basename(test_runner)
-    stdout, stderr, status = Open3.capture3("ssh #{server} \"cd #{run_dir}; ruby #{test_runner_name} #{arg_list}\"")
+  puts "#{ssh} #{server} \"cd #{run_dir}; ruby #{test_runner_name} #{arg_list}\"" 
+    stdout, stderr, status = Open3.capture3("#{ssh} #{server} \"cd #{run_dir}; ruby #{test_runner_name} #{arg_list}\"")
     if !(status.success?)
       return [stderr, false]
     else
@@ -271,6 +284,8 @@ module AutomatedTestsHelper
   end
 
   def self.process_result(result, submission_id, assignment_id)
+    puts "processing"
+    puts result
     parser = XML::Parser.string(result)
 
     # parse the xml doc
@@ -278,6 +293,7 @@ module AutomatedTestsHelper
 
     # find all the test_script nodes and loop over them
     test_scripts = doc.find('/testrun/test_script')
+    puts "#{test_scripts.length}"
     test_scripts.each do |s_node|
       script_result = TestScriptResult.new
       script_result.submission_id = submission_id
@@ -352,6 +368,7 @@ module AutomatedTestsHelper
       end
       
       # save to database
+      puts "saving result to db: #{script_result.inspect}"
       script_result.save
       
     end
