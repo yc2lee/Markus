@@ -199,7 +199,7 @@ li.annotation_category {
     /*width: 370px;*/
   }
 
-    #mark_viewer, #summary_viewer, #annotations_summary {
+    #mark_viewer, #summary_viewer, #annotations_summary, #test_results {
       height: 650px;
       overflow: auto;
     }

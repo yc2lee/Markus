@@ -1,0 +1,824 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+                <meta name="csrf-param" content="authenticity_token"/>
+<meta name="csrf-token" content="cM1XMDT56Aj0F5ZmGbRJFpfc90WjDeP9Mw&#47;+Lcvezc4="/>
+        <script type="text/javascript">
+//<![CDATA[
+const AUTH_TOKEN = "cM1XMDT56Aj0F5ZmGbRJFpfc90WjDeP9Mw/+Lcvezc4=";
+//]]>
+</script> 
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>MarkUs - manage</title>
+  <link href="/stylesheets/main.css?1359417349" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/livepipe/tabs.css?1358369698" media="all" rel="stylesheet" type="text/css" />
+
+
+
+
+
+  <script src="/javascripts/application.js?1358369698" type="text/javascript"></script> 
+  <!-- DELETE PROTOTYPE!!!! -->
+  <!-- <script src="/javascripts/prototype.js?1358386805" type="text/javascript"></script>  -->
+  <!-- DELETE PROTOTYPE!!!! -->
+  <script src="/javascripts/rails.js?1358386805" type="text/javascript"></script> 
+  <script src="/javascripts/menu.js?1358369698" type="text/javascript"></script>  
+  <script src="/javascripts/livepipe/livepipe.js?1358369698" type="text/javascript"></script>
+<script src="/javascripts/livepipe/window.js?1358369698" type="text/javascript"></script>
+<script src="/javascripts/livepipe/tabs.js?1358369698" type="text/javascript"></script>
+  
+
+
+</head>
+
+<body>
+  <div id="loggedIn">
+    
+<div id="header">
+  <div id="user_info">
+    <span id="logout_area">
+      <span id="lang_chooser">
+        Choose Language:
+        <select id="locale" name="locale" onchange="javascript:window.location.href = '/en/assignments/2/automated_tests/manage'.replace(/en/, this.options[this.selectedIndex].value);"><option value="en" selected="selected">en</option>
+<option value="fr">fr</option></select>
+
+      </span>
+      <a href="/en/main/about" data-remote="true"><img alt="About MarkUs" id="about_icon" src="/images/icons/information.png?1358369698" title="About MarkUs" /></a>
+
+      <span id="admin_logged_in_as">
+      </span>
+      <span id="user_name">
+        admin admin
+        ( <b>a</b> )
+      </span>
+
+        <a href="/en/main/role_switch" data-remote="true"><img alt="Switch Role" id="switch_role_icon" src="/images/icons/group_go.png?1358369698" title="Switch Role" /></a>
+
+      <a href="/en/main/logout?id=logout_link">Log out</a>
+    </span>
+  </div>
+  <div id="working" style="display:none;">
+    Working...
+  </div>
+  <div id="course">
+
+    <b>CSC108 Fall 2009: Introduction to Computer Programming</b>
+  </div>
+</div>
+<div id="logo">
+  <a href="http://localhost:3000/en"><img alt="Markus_logo_small" src="/images/markus_logo_small.png?1358369698" /></a>
+
+
+</div>
+
+    
+<div id="menu">
+       <span>
+
+      <a href="/en/main">Dashboard</a>
+      </span>
+
+      <span  id ="menu_active">
+           <a href="/en/assignments">Assignments</a>
+        </span>
+
+        <span >
+
+        <a href="/en/students">Users</a>
+
+        </span>
+        <span >
+            <a href="/en/sections">Sections</a>
+        </span>
+
+
+
+          <span>
+
+          <a href="/en/notes">Notes</a>
+      </span>
+
+</div>
+
+    <div id="sub_menu">
+  <ul id="root" class="level1 horizontal">
+    <li class="level1 visible_dropdown">
+
+
+        <span id="choose_an_assignment">A2</span>
+
+      <ul class="level2 dropdown">
+          <li class="level2">
+    <a href="/en/assignments/new">Add Assignment</a>
+  </li>
+  <li class="level2">
+    <a href="/en/grade_entry_forms/new">Add Marks Spreadsheet</a>
+  </li>
+  <li class="level2">
+
+    <div class="clear"></div><br><br>
+  </li>
+
+
+      <li class="level2">
+                <a href="/en/assignments/1/automated_tests/manage?id=1">A1</a>
+      </li>
+      <li class="level2">
+        <p id="drop_down_current_assignment">
+
+          A2
+        </p>
+      </li>
+
+
+
+
+
+      </ul>
+   </li>
+
+
+      <li 
+          id="sub_menu_active"
+         >
+
+         <a href="/en/assignments/2/edit">Settings</a>
+
+      </li>
+      <li >
+         <a href="/en/assignments/2/groups">Groups</a>
+      </li>
+      <li >
+         <a href="/en/assignments/2/graders">Graders</a>
+
+      </li>
+       <li >
+          <a href="/en/assignments/2/submissions/browse">Submissions</a>
+      </li>
+    </ul>
+  </div>
+
+    
+<div id="sub_sub_menu">
+  <ul id="root" class="level1 horizontal">
+
+          <li >
+        <a href="/en/assignments/2/edit">Properties</a>
+       </li>
+       <li >
+         <a href="/en/assignments/2/rubrics">Marking Scheme</a>
+
+      </li>
+      <li >
+
+        <a href="/en/assignments/2/annotation_categories">Annotations</a>
+      </li>
+       <li 
+         id="sub_sub_menu_active"
+          >
+          <a href="/en/assignments/2/automated_tests/manage">Test Framework</a>
+      </li>
+   </ul>
+</div>
+
+    <script type="text/javascript">
+//<![CDATA[
+
+ var about_modal = null;
+
+  $(document).ready(function() {
+    about_modal = new Control.Modal($('about_dialog'), {
+      overlayOpacity: 0.75,
+      className: 'about_modal',
+      fade: false
+    });
+ });
+//]]>
+
+</script>
+<!-- about scaffold -->
+<div id="about_dialog" style="display: none;">
+  <!-- about dialog content gets injected here -->
+  <div>&nbsp;</div>
+</div>
+
+    <script type="text/javascript">
+//<![CDATA[
+
+var role_switch_modal = null;
+
+  $(document).ready(function() {
+    //Create the modal dialog
+  role_switch_modal = new Control.Modal($('role_switch_dialog'),
+  {
+    overlayOpacity: 0.75,
+    className: 'role_switch_modal',
+    fade:false
+
+  });
+});
+//]]>
+</script>
+
+<div id="role_switch_dialog" style="display:none;">
+  <!-- Role switch content gets injected here -->
+  <div>&nbsp;</div>
+
+</div>
+
+    <div id="container">
+      <div id="content">
+        <noscript>
+<div class="warning">
+This page uses Javascript. Your browser either doesn't support javascript
+or you have turned it off. <br />
+To see this page as it is meant to appear, please use a Javascript
+enabled browser.
+</div>
+</noscript>
+
+        <script src="/javascripts/create_assignment.js?1359417349" type="text/javascript"></script>
+
+<div id="title_bar"><h1>Test Framework</h1>
+</div>
+
+                    <div style="clear:both;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+  $(document).ready(function() {
+
+      toggle_automated_tests(true);
+
+  });
+//]]>
+</script>
+
+
+<div class="wrapLeft">
+
+<script>
+  function updateScriptName( filefield_id, objID ) {
+
+    var newName = document.getElementById(id).value;
+    document.getElementById().innerHTML = newDesc;
+    document.getElementById("test_script_" + objID).innerHTML = newName;
+
+  }
+
+</script>
+
+<form accept-charset="UTF-8" action="/en/assignments/2/automated_tests/manage" class="assignment_edit" enctype="multipart/form-data" id="assignment_edit" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="cM1XMDT56Aj0F5ZmGbRJFpfc90WjDeP9Mw/+Lcvezc4=" /></div>
+
+
+<fieldset>
+  <legend>Test Framework</legend>
+
+  <p id="testing_framework_style">
+    <input name="assignment[enable_test]" type="hidden" value="0" /><input checked="checked" id="is_testing_framework_enabled" name="assignment[enable_test]" onchange="toggle_automated_tests($('is_testing_framework_enabled'))" type="checkbox" value="1" />
+    <label class="checkbox_label" for="is_testing_framework_enabled">Enable tests for this assignment</label>
+  </p>
+
+  <div id="testing_framework_tokens">
+    <p id="tokens">
+      <label class="inline_label" for="tokens_per_day">Tokens available per group</label>
+
+      <input id="tokens_per_day" maxlength="3" name="assignment[tokens_per_day]" size="5" type="text" value="0" />
+    </p>
+  </div>
+
+  <fieldset>
+    <div class="wrapLeft">
+
+      <h4>Test Script Files</h4>
+      <div id="test_scripts">
+
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script>
+$(document).ready(function() {
+  $( "#sortable" ).sortable({ cancel:".settings_form" });
+  $( ".collapse" ).click(function() { alert($(this).children('.desc').text()); });
+});
+
+</script>
+
+
+<div id="sortable">
+            <div>
+                <div style="float:left;width:20px;font-weight:bold;">↕</div>
+                <fieldset class="settings_form" xmlns="http://www.w3.org/1999/xhtml">
+                    <legend><a href=''>q1_test_script.rkt</a> <span style='font-style:normal;'><a class="collapse">[-]</a></span></legend>
+                    <div style="margin-left:20px;margin-right:40px;float:left;">
+                        <label style="vertical-align:top;" class="desc">Description</label> <textarea rows="2" cols="30" class="desc"></textarea> <br/>
+                        <label>Maximum Marks</label> <input type="text" size="30" /> <br/>
+                        <label>Display Settings</label> <br/>
+                        <ul>
+                                <li><label style="width:180px;">Test Description</label>  <select><option>Display after submission</option></select></li>    
+                                <li><label style="width:180px;">Run Status</label>  <select><option>Display after submission</option></select></li>
+                                <li><label style="width:180px;">Marks Earned</label>  <select><option>Display after submission</option></select></li>
+                                <li><label style="width:180px;">Display Test Input</label>  <select><option>Display after submission</option></select></li>
+                                <li><label style="width:180px;">Expected Output</label>  <select><option>Display after submission</option></select></li>
+                                <li><label style="width:180px;">Actual Output</label>  <select><option>Display after submission</option></select></li>
+                        </ul>
+                    </div>
+                    <div id="right_side">
+                        <label>Replace</label> <input type="text" size="30" /> <br/>
+                        <label>Remove</label> <input type="checkbox" /> <br/> <br/> <br/>
+                        <label>Run on Request</label> <input type="checkbox" /> <br/> 
+                        <label>Run On Submission</label> <input type="checkbox" /> <br/>
+                        <label>Halt On Failure</label> <input type="checkbox" /> <br/>
+                    </div>            
+                    <div style="clear:both;"></div>
+                </fieldset>
+            </div>
+
+
+
+            <div>
+                <div style="float:left;width:20px;font-weight:bold;">↕</div>
+                <fieldset class="settings_form" xmlns="http://www.w3.org/1999/xhtml">
+                    <legend><a href=''>q2_test_script.rkt</a> <span style='font-style:normal;'><a class="collapse">[-]</a></span></span></legend>
+                    <div style="margin-left:20px;margin-right:40px;float:left;">
+                        <label style="vertical-align:top;" class="desc">Description</label> <textarea rows="2" cols="30" class="desc"></textarea> <br/>
+                        <label>Maximum Marks</label> <input type="text" size="30" /> <br/>
+                        <label>Display Settings</label> <br/>
+                        <ul>
+                                <li><label style="width:180px;">Test Description</label>  <select><option>Display after submission</option></select></li>    
+                                <li><label style="width:180px;">Run Status</label>  <select><option>Display after submission</option></select></li>
+                                <li><label style="width:180px;">Marks Earned</label>  <select><option>Display after submission</option></select></li>
+                                <li><label style="width:180px;">Display Test Input</label>  <select><option>Display after submission</option></select></li>
+                                <li><label style="width:180px;">Expected Output</label>  <select><option>Display after submission</option></select></li>
+                                <li><label style="width:180px;">Actual Output</label>  <select><option>Display after submission</option></select></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <label>Replace</label> <input type="text" size="30" /> <br/>
+                        <label>Remove</label> <input type="checkbox" /> <br/> <br/> <br/>
+                        <label>Run on Request</label> <input type="checkbox" /> <br/> 
+                        <label>Run On Submission</label> <input type="checkbox" /> <br/>
+                        <label>Halt On Failure</label> <input type="checkbox" /> <br/>
+                    </div>            
+                    <div style="clear:both;"></div>
+                </fieldset>
+            </div>
+
+            <div>
+                <div style="float:left;width:20px;font-weight:bold;">↕</div>
+                <fieldset class="settings_form" xmlns="http://www.w3.org/1999/xhtml">
+                    <legend><a href=''>q3_test_script.rkt</a> <span style='font-style:normal;'>[+]</span></legend>
+                </fieldset>
+            </div>
+
+
+            <div>
+                <div style="float:left;width:20px;font-weight:bold;">↕</div>
+                <fieldset class="settings_form" xmlns="http://www.w3.org/1999/xhtml">
+                    <legend><a href=''>q4_test_script.rkt</a> <span style='font-style:normal;'>[+]</span></legend>
+                </fieldset>
+            </div>
+
+
+            <div>
+                <div style="float:left;width:20px;font-weight:bold;">↕</div>
+                <fieldset class="settings_form" xmlns="http://www.w3.org/1999/xhtml">
+                    <legend><a href=''>q5_test_script.rkt</a> <span style='font-style:normal;'>[+]</span></legend>
+                </fieldset>
+            </div>
+</div>            
+<!--                
+                    <div>
+                            <label style="width:180px;">Display Test Description</label>  <select><option>Display after submission</option></select><br/>    
+                            <label style="width:180px;">Display Run Status</label>  <select><option>Display after submission</option></select><br/>
+                            <label style="width:180px;">Display Marks Earned</label>  <select><option>Display after submission</option></select><br/>
+                            <label style="width:180px;">Display Display Test Input</label>  <select><option>Display after submission</option></select><br/>
+                            <label style="width:180px;">Display Expected Output</label>  <select><option>Display after submission</option></select><br/>
+                            <label style="width:180px;">Display Actual Output</label>  <select><option>Display after submission</option></select><br/>
+                    </div>
+-->
+        
+          <!--        <label for="assignment_test_scripts_attributes_1_script_name"><span class="translation_missing" title="translation missing: en.script_name">Script Name</span></label>
+
+                    <input id="test_script_70094145099520" name="test_script_70094145099520" readonly="readonly" type="text" value="rkt_suite_1.rkt" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="inline_label" for="replace_scriptname">Replace</label>
+
+                  <input id="assignment_test_scripts_attributes_1_script_name" name="assignment[test_scripts_attributes][1][script_name]" type="file" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    Description:
+                      <input id="assignment_test_scripts_attributes_1_description" name="assignment[test_scripts_attributes][1][description]" size="30" type="text" value="a" />
+
+                    <label class="checkbox_label" for="assignment_test_scripts_attributes_1__destroy">Remove</label>
+                    <input name="assignment[test_scripts_attributes][1][_destroy]" type="hidden" value="0" /><input id="assignment_test_scripts_attributes_1__destroy" name="assignment[test_scripts_attributes][1][_destroy]" type="checkbox" value="1" />
+
+                <input id="assignment_test_scripts_attributes_1_id" name="assignment[test_scripts_attributes][1][id]" type="hidden" value="6" /></div>
+
+                <input id="assignment_test_scripts_attributes_0_id" name="assignment[test_scripts_attributes][0][id]" type="hidden" value="6" /> -->
+          <div class="test_script">
+
+
+  <label for="assignment_test_scripts_attributes_3_script_name"><span class="translation_missing" title="translation missing: en.script_name">Script Name</span></label>
+
+    <input id="test_script_70094145214400" name="test_script_70094145214400" readonly="readonly" type="text" value="rb_suite_1.rb" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label class="inline_label" for="replace_scriptname">Replace</label>
+
+  <input id="assignment_test_scripts_attributes_3_script_name" name="assignment[test_scripts_attributes][3][script_name]" type="file" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    Description:
+      <input id="assignment_test_scripts_attributes_3_description" name="assignment[test_scripts_attributes][3][description]" size="30" type="text" value="b" />
+
+    <label class="checkbox_label" for="assignment_test_scripts_attributes_3__destroy">Remove</label>
+    <input name="assignment[test_scripts_attributes][3][_destroy]" type="hidden" value="0" /><input id="assignment_test_scripts_attributes_3__destroy" name="assignment[test_scripts_attributes][3][_destroy]" type="checkbox" value="1" />
+
+<input id="assignment_test_scripts_attributes_3_id" name="assignment[test_scripts_attributes][3][id]" type="hidden" value="7" /></div>
+
+<input id="assignment_test_scripts_attributes_2_id" name="assignment[test_scripts_attributes][2][id]" type="hidden" value="7" />
+          <div class="test_script">
+
+
+  <label for="assignment_test_scripts_attributes_5_script_name"><span class="translation_missing" title="translation missing: en.script_name">Script Name</span></label>
+
+    <input id="test_script_70094145366480" name="test_script_70094145366480" readonly="readonly" type="text" value="rb_suite_2.rb" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label class="inline_label" for="replace_scriptname">Replace</label>
+
+  <input id="assignment_test_scripts_attributes_5_script_name" name="assignment[test_scripts_attributes][5][script_name]" type="file" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    Description:
+      <input id="assignment_test_scripts_attributes_5_description" name="assignment[test_scripts_attributes][5][description]" size="30" type="text" value="c" />
+
+    <label class="checkbox_label" for="assignment_test_scripts_attributes_5__destroy">Remove</label>
+    <input name="assignment[test_scripts_attributes][5][_destroy]" type="hidden" value="0" /><input id="assignment_test_scripts_attributes_5__destroy" name="assignment[test_scripts_attributes][5][_destroy]" type="checkbox" value="1" />
+
+<input id="assignment_test_scripts_attributes_5_id" name="assignment[test_scripts_attributes][5][id]" type="hidden" value="8" /></div>
+
+<input id="assignment_test_scripts_attributes_4_id" name="assignment[test_scripts_attributes][4][id]" type="hidden" value="8" />
+          <div class="test_script">
+
+
+  <label for="assignment_test_scripts_attributes_7_script_name"><span class="translation_missing" title="translation missing: en.script_name">Script Name</span></label>
+
+    <input id="test_script_40891700" name="test_script_40891700" readonly="readonly" type="text" value="rb_suite_3.rb" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label class="inline_label" for="replace_scriptname">Replace</label>
+
+  <input id="assignment_test_scripts_attributes_7_script_name" name="assignment[test_scripts_attributes][7][script_name]" type="file" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    Description:
+      <input id="assignment_test_scripts_attributes_7_description" name="assignment[test_scripts_attributes][7][description]" size="30" type="text" value="d" />
+
+    <label class="checkbox_label" for="assignment_test_scripts_attributes_7__destroy">Remove</label>
+    <input name="assignment[test_scripts_attributes][7][_destroy]" type="hidden" value="0" /><input id="assignment_test_scripts_attributes_7__destroy" name="assignment[test_scripts_attributes][7][_destroy]" type="checkbox" value="1" />
+
+<input id="assignment_test_scripts_attributes_7_id" name="assignment[test_scripts_attributes][7][id]" type="hidden" value="9" /></div>
+
+<input id="assignment_test_scripts_attributes_6_id" name="assignment[test_scripts_attributes][6][id]" type="hidden" value="9" />      </div>
+
+      <p id="test_script_add_link">
+        <a href="#" onclick="try {
+
+        if ($F('is_testing_framework_enabled') != null) {
+          var new_test_script_id = new Date().getTime();
+          $('test_scripts').insert({bottom: &quot;&lt;div class=\&quot;test_script\&quot;&gt;\n\n\n  &lt;label for=\&quot;assignment_test_scripts_attributes_8_script_name\&quot;&gt;&lt;span class=\&quot;translation_missing\&quot; title=\&quot;translation missing: en.script_name\&quot;&gt;Script Name&lt;\/span&gt;&lt;\/label&gt;\n\n\n  &lt;input id=\&quot;assignment_test_scripts_attributes_8_script_name\&quot; name=\&quot;assignment[test_scripts_attributes][8][script_name]\&quot; type=\&quot;file\&quot; /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;\n\n    Description:\n      &lt;input id=\&quot;assignment_test_scripts_attributes_8_description\&quot; name=\&quot;assignment[test_scripts_attributes][8][description]\&quot; placeholder=\&quot;Enter Description Here\&quot; size=\&quot;30\&quot; type=\&quot;text\&quot; /&gt;\n\n    &lt;a href=\&quot;#\&quot; onclick=\&quot;$(this).up(\'.test_script\').remove(); return false;\&quot;&gt;Remove&lt;\/a&gt;\n\n&lt;\/div&gt;\n&quot;.replace(/(attributes_\d+|\[\d+\])/g, new_test_script_id) });
+          $('test_script_options').insert({bottom: &quot;&lt;div class=\&quot;test_script_options\&quot;&gt;\n\n\n\n  &lt;div id=\&quot;test_script_70094009702340_options\&quot;&lt;\/div&gt;\n\n    &lt;h3 id=\&quot;test_script_\&quot;&gt;\n      70094009702340 Test Script Options\&quot;\n    &lt;\/h3&gt;\n\n  &lt;div id=\&quot;test_script_#{f.object_id}_run_options\&quot; width=\&quot;60%\&quot;&gt;\n    &lt;label for=\&quot;assignment_test_scripts_attributes_9_run_settings\&quot;&gt;Run Settings:&lt;\/label&gt;\n\n    UPDATE ME: seq_num\n    &lt;input id=\&quot;assignment_test_scripts_attributes_9_seq_num\&quot; name=\&quot;assignment[test_scripts_attributes][9][seq_num]\&quot; size=\&quot;30\&quot; type=\&quot;number\&quot; /&gt;\n\n    Maximum marks for script\n    &lt;input id=\&quot;assignment_test_scripts_attributes_9_max_marks\&quot; name=\&quot;assignment[test_scripts_attributes][9][max_marks]\&quot; size=\&quot;30\&quot; type=\&quot;number\&quot; /&gt;\n\n    Run Test On Request\n    &lt;input name=\&quot;assignment[test_scripts_attributes][9][run_on_request]\&quot; type=\&quot;hidden\&quot; value=\&quot;0\&quot; /&gt;&lt;input id=\&quot;assignment_test_scripts_attributes_9_run_on_request\&quot; name=\&quot;assignment[test_scripts_attributes][9][run_on_request]\&quot; type=\&quot;checkbox\&quot; value=\&quot;1\&quot; /&gt;\n\n    Run Test on Submission:\n    &lt;input name=\&quot;assignment[test_scripts_attributes][9][run_on_submission]\&quot; type=\&quot;hidden\&quot; value=\&quot;0\&quot; /&gt;&lt;input id=\&quot;assignment_test_scripts_attributes_9_run_on_submission\&quot; name=\&quot;assignment[test_scripts_attributes][9][run_on_submission]\&quot; type=\&quot;checkbox\&quot; value=\&quot;1\&quot; /&gt;\n\n    Halt Testing On Failure\n    &lt;input name=\&quot;assignment[test_scripts_attributes][9][halts_testing]\&quot; type=\&quot;hidden\&quot; value=\&quot;0\&quot; /&gt;&lt;input id=\&quot;assignment_test_scripts_attributes_9_halts_testing\&quot; name=\&quot;assignment[test_scripts_attributes][9][halts_testing]\&quot; type=\&quot;checkbox\&quot; value=\&quot;1\&quot; /&gt;\n  &lt;\/div&gt;\n  &lt;\/br&gt;\n  &lt;div id=\&quot;test_script_#{f.object_id}_display_options\&quot; width=\&quot;60%\&quot;&gt;\n       &lt;label for=\&quot;assignment_test_scripts_attributes_9_display_settings\&quot;&gt;Display Settings:&lt;\/label&gt;\n         \n    Display Test Description:\n    &lt;select id=\&quot;assignment_test_scripts_attributes_9_display_description\&quot; name=\&quot;assignment[test_scripts_attributes][9][display_description]\&quot;&gt;&lt;option value=\&quot;display_after_submission\&quot;&gt;Display after submission&lt;\/option&gt;\n&lt;option value=\&quot;display_after_collection\&quot;&gt;Display after collection&lt;\/option&gt;\n&lt;option value=\&quot;do_not_display\&quot;&gt;Do not display&lt;\/option&gt;&lt;\/select&gt;\n\n    Display Run Status:\n    &lt;select id=\&quot;assignment_test_scripts_attributes_9_display_run_status\&quot; name=\&quot;assignment[test_scripts_attributes][9][display_run_status]\&quot;&gt;&lt;option value=\&quot;display_after_submission\&quot;&gt;Display after submission&lt;\/option&gt;\n&lt;option value=\&quot;display_after_collection\&quot;&gt;Display after collection&lt;\/option&gt;\n&lt;option value=\&quot;do_not_display\&quot;&gt;Do not display&lt;\/option&gt;&lt;\/select&gt;\n\n    Display Marks Earned:\n    &lt;select id=\&quot;assignment_test_scripts_attributes_9_display_marks_earned\&quot; name=\&quot;assignment[test_scripts_attributes][9][display_marks_earned]\&quot;&gt;&lt;option value=\&quot;display_after_submission\&quot;&gt;Display after submission&lt;\/option&gt;\n&lt;option value=\&quot;display_after_collection\&quot;&gt;Display after collection&lt;\/option&gt;\n&lt;option value=\&quot;do_not_display\&quot;&gt;Do not display&lt;\/option&gt;&lt;\/select&gt;\n\n    Display Test Input:\n    &lt;select id=\&quot;assignment_test_scripts_attributes_9_display_input\&quot; name=\&quot;assignment[test_scripts_attributes][9][display_input]\&quot;&gt;&lt;option value=\&quot;display_after_submission\&quot;&gt;Display after submission&lt;\/option&gt;\n&lt;option value=\&quot;display_after_collection\&quot;&gt;Display after collection&lt;\/option&gt;\n&lt;option value=\&quot;do_not_display\&quot;&gt;Do not display&lt;\/option&gt;&lt;\/select&gt;\n\n    Display Expected Output\n    &lt;select id=\&quot;assignment_test_scripts_attributes_9_display_expected_output\&quot; name=\&quot;assignment[test_scripts_attributes][9][display_expected_output]\&quot;&gt;&lt;option value=\&quot;display_after_submission\&quot;&gt;Display after submission&lt;\/option&gt;\n&lt;option value=\&quot;display_after_collection\&quot;&gt;Display after collection&lt;\/option&gt;\n&lt;option value=\&quot;do_not_display\&quot;&gt;Do not display&lt;\/option&gt;&lt;\/select&gt;\n\n    Display Actual Ouput\n    &lt;select id=\&quot;assignment_test_scripts_attributes_9_display_actual_output\&quot; name=\&quot;assignment[test_scripts_attributes][9][display_actual_output]\&quot;&gt;&lt;option value=\&quot;display_after_submission\&quot;&gt;Display after submission&lt;\/option&gt;\n&lt;option value=\&quot;display_after_collection\&quot;&gt;Display after collection&lt;\/option&gt;\n&lt;option value=\&quot;do_not_display\&quot;&gt;Do not display&lt;\/option&gt;&lt;\/select&gt;\n  &lt;\/div&gt;\n\n\n&lt;\/div&gt;\n&quot;.replace(/(attributes_\d+|\[\d+\])/g, new_test_script_id) });
+        } else {
+          alert(&quot;You must enable tests for this assignment to add a test script file.&quot;);
+        }
+      
+} catch (e) { alert('RJS error:\n\n' + e.toString()); alert('\n        if ($F(\'is_testing_framework_enabled\') != null) {\n          var new_test_script_id = new Date().getTime();\n          $(\'test_scripts\').insert({bottom: \&quot;&lt;div class=\\\&quot;test_script\\\&quot;&gt;\\n\\n\\n  &lt;label for=\\\&quot;assignment_test_scripts_attributes_8_script_name\\\&quot;&gt;&lt;span class=\\\&quot;translation_missing\\\&quot; title=\\\&quot;translation missing: en.script_name\\\&quot;&gt;Script Name&lt;\\/span&gt;&lt;\\/label&gt;\\n\\n\\n  &lt;input id=\\\&quot;assignment_test_scripts_attributes_8_script_name\\\&quot; name=\\\&quot;assignment[test_scripts_attributes][8][script_name]\\\&quot; type=\\\&quot;file\\\&quot; /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;\\n\\n    Description:\\n      &lt;input id=\\\&quot;assignment_test_scripts_attributes_8_description\\\&quot; name=\\\&quot;assignment[test_scripts_attributes][8][description]\\\&quot; placeholder=\\\&quot;Enter Description Here\\\&quot; size=\\\&quot;30\\\&quot; type=\\\&quot;text\\\&quot; /&gt;\\n\\n    &lt;a href=\\\&quot;#\\\&quot; onclick=\\\&quot;$(this).up(\\\'.test_script\\\').remove(); return false;\\\&quot;&gt;Remove&lt;\\/a&gt;\\n\\n&lt;\\/div&gt;\\n\&quot;.replace(/(attributes_\\d+|\\[\\d+\\])/g, new_test_script_id) });\n          $(\'test_script_options\').insert({bottom: \&quot;&lt;div class=\\\&quot;test_script_options\\\&quot;&gt;\\n\\n\\n\\n  &lt;div id=\\\&quot;test_script_70094009702340_options\\\&quot;&lt;\\/div&gt;\\n\\n    &lt;h3 id=\\\&quot;test_script_\\\&quot;&gt;\\n      70094009702340 Test Script Options\\\&quot;\\n    &lt;\\/h3&gt;\\n\\n  &lt;div id=\\\&quot;test_script_#{f.object_id}_run_options\\\&quot; width=\\\&quot;60%\\\&quot;&gt;\\n    &lt;label for=\\\&quot;assignment_test_scripts_attributes_9_run_settings\\\&quot;&gt;Run Settings:&lt;\\/label&gt;\\n\\n    UPDATE ME: seq_num\\n    &lt;input id=\\\&quot;assignment_test_scripts_attributes_9_seq_num\\\&quot; name=\\\&quot;assignment[test_scripts_attributes][9][seq_num]\\\&quot; size=\\\&quot;30\\\&quot; type=\\\&quot;number\\\&quot; /&gt;\\n\\n    Maximum marks for script\\n    &lt;input id=\\\&quot;assignment_test_scripts_attributes_9_max_marks\\\&quot; name=\\\&quot;assignment[test_scripts_attributes][9][max_marks]\\\&quot; size=\\\&quot;30\\\&quot; type=\\\&quot;number\\\&quot; /&gt;\\n\\n    Run Test On Request\\n    &lt;input name=\\\&quot;assignment[test_scripts_attributes][9][run_on_request]\\\&quot; type=\\\&quot;hidden\\\&quot; value=\\\&quot;0\\\&quot; /&gt;&lt;input id=\\\&quot;assignment_test_scripts_attributes_9_run_on_request\\\&quot; name=\\\&quot;assignment[test_scripts_attributes][9][run_on_request]\\\&quot; type=\\\&quot;checkbox\\\&quot; value=\\\&quot;1\\\&quot; /&gt;\\n\\n    Run Test on Submission:\\n    &lt;input name=\\\&quot;assignment[test_scripts_attributes][9][run_on_submission]\\\&quot; type=\\\&quot;hidden\\\&quot; value=\\\&quot;0\\\&quot; /&gt;&lt;input id=\\\&quot;assignment_test_scripts_attributes_9_run_on_submission\\\&quot; name=\\\&quot;assignment[test_scripts_attributes][9][run_on_submission]\\\&quot; type=\\\&quot;checkbox\\\&quot; value=\\\&quot;1\\\&quot; /&gt;\\n\\n    Halt Testing On Failure\\n    &lt;input name=\\\&quot;assignment[test_scripts_attributes][9][halts_testing]\\\&quot; type=\\\&quot;hidden\\\&quot; value=\\\&quot;0\\\&quot; /&gt;&lt;input id=\\\&quot;assignment_test_scripts_attributes_9_halts_testing\\\&quot; name=\\\&quot;assignment[test_scripts_attributes][9][halts_testing]\\\&quot; type=\\\&quot;checkbox\\\&quot; value=\\\&quot;1\\\&quot; /&gt;\\n  &lt;\\/div&gt;\\n  &lt;\\/br&gt;\\n  &lt;div id=\\\&quot;test_script_#{f.object_id}_display_options\\\&quot; width=\\\&quot;60%\\\&quot;&gt;\\n         &lt;label for=\\\&quot;assignment_test_scripts_attributes_9_display_settings\\\&quot;&gt;Display Settings:&lt;\\/label&gt;\\n   \\n    Display Test Description:\\n    &lt;select id=\\\&quot;assignment_test_scripts_attributes_9_display_description\\\&quot; name=\\\&quot;assignment[test_scripts_attributes][9][display_description]\\\&quot;&gt;&lt;option value=\\\&quot;display_after_submission\\\&quot;&gt;Display after submission&lt;\\/option&gt;\\n&lt;option value=\\\&quot;display_after_collection\\\&quot;&gt;Display after collection&lt;\\/option&gt;\\n&lt;option value=\\\&quot;do_not_display\\\&quot;&gt;Do not display&lt;\\/option&gt;&lt;\\/select&gt;\\n\\n    Display Run Status:\\n    &lt;select id=\\\&quot;assignment_test_scripts_attributes_9_display_run_status\\\&quot; name=\\\&quot;assignment[test_scripts_attributes][9][display_run_status]\\\&quot;&gt;&lt;option value=\\\&quot;display_after_submission\\\&quot;&gt;Display after submission&lt;\\/option&gt;\\n&lt;option value=\\\&quot;display_after_collection\\\&quot;&gt;Display after collection&lt;\\/option&gt;\\n&lt;option value=\\\&quot;do_not_display\\\&quot;&gt;Do not display&lt;\\/option&gt;&lt;\\/select&gt;\\n\\n    Display Marks Earned:\\n    &lt;select id=\\\&quot;assignment_test_scripts_attributes_9_display_marks_earned\\\&quot; name=\\\&quot;assignment[test_scripts_attributes][9][display_marks_earned]\\\&quot;&gt;&lt;option value=\\\&quot;display_after_submission\\\&quot;&gt;Display after submission&lt;\\/option&gt;\\n&lt;option value=\\\&quot;display_after_collection\\\&quot;&gt;Display after collection&lt;\\/option&gt;\\n&lt;option value=\\\&quot;do_not_display\\\&quot;&gt;Do not display&lt;\\/option&gt;&lt;\\/select&gt;\\n\\n    Display Test Input:\\n    &lt;select id=\\\&quot;assignment_test_scripts_attributes_9_display_input\\\&quot; name=\\\&quot;assignment[test_scripts_attributes][9][display_input]\\\&quot;&gt;&lt;option value=\\\&quot;display_after_submission\\\&quot;&gt;Display after submission&lt;\\/option&gt;\\n&lt;option value=\\\&quot;display_after_collection\\\&quot;&gt;Display after collection&lt;\\/option&gt;\\n&lt;option value=\\\&quot;do_not_display\\\&quot;&gt;Do not display&lt;\\/option&gt;&lt;\\/select&gt;\\n\\n    Display Expected Output\\n    &lt;select id=\\\&quot;assignment_test_scripts_attributes_9_display_expected_output\\\&quot; name=\\\&quot;assignment[test_scripts_attributes][9][display_expected_output]\\\&quot;&gt;&lt;option value=\\\&quot;display_after_submission\\\&quot;&gt;Display after submission&lt;\\/option&gt;\\n&lt;option value=\\\&quot;display_after_collection\\\&quot;&gt;Display after collection&lt;\\/option&gt;\\n&lt;option value=\\\&quot;do_not_display\\\&quot;&gt;Do not display&lt;\\/option&gt;&lt;\\/select&gt;\\n\\n    Display Actual Ouput\\n    &lt;select id=\\\&quot;assignment_test_scripts_attributes_9_display_actual_output\\\&quot; name=\\\&quot;assignment[test_scripts_attributes][9][display_actual_output]\\\&quot;&gt;&lt;option value=\\\&quot;display_after_submission\\\&quot;&gt;Display after submission&lt;\\/option&gt;\\n&lt;option value=\\\&quot;display_after_collection\\\&quot;&gt;Display after collection&lt;\\/option&gt;\\n&lt;option value=\\\&quot;do_not_display\\\&quot;&gt;Do not display&lt;\\/option&gt;&lt;\\/select&gt;\\n  &lt;\\/div&gt;\\n\\n\\n&lt;\\/div&gt;\\n\&quot;.replace(/(attributes_\\d+|\\[\\d+\\])/g, new_test_script_id) });\n        } else {\n          alert(\&quot;You must enable tests for this assignment to add a test script file.\&quot;);\n        }\n      '); throw e }; return false;">Add Test Script File</a>
+      </p>
+
+      <h4>Test Script Support Files</h4>
+      <div id="test_support_files">
+                  </div>
+      <p id="test_support_file_add_link">
+
+        <a href="#" onclick="try {
+
+        if ($F('is_testing_framework_enabled') != null) {
+          var new_test_support_file_id = new Date().getTime();
+          $('test_support_files').insert({bottom: &quot;&lt;div class=\&quot;test_support_file\&quot;&gt;\n\n\n  &lt;label for=\&quot;assignment_test_support_files_attributes_0_file_name\&quot;&gt;&lt;span class=\&quot;translation_missing\&quot; title=\&quot;translation missing: en.file_name\&quot;&gt;File Name&lt;\/span&gt;&lt;\/label&gt;\n\n\n  &lt;input id=\&quot;assignment_test_support_files_attributes_0_file_name\&quot; name=\&quot;assignment[test_support_files_attributes][0][file_name]\&quot; type=\&quot;file\&quot; /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;\n\n\n    &lt;a href=\&quot;#\&quot; onclick=\&quot;$(this).up(\'.test_support_file\').remove(); return false;\&quot;&gt;Remove&lt;\/a&gt;\n\n&lt;\/div&gt;\n&quot;.replace(/(attributes_\d+|\[\d+\])/g, new_test_support_file_id) });
+        } else {
+          alert(&quot;You must enable tests for this assignment to add a test support file.&quot;);
+        }
+      
+} catch (e) { alert('RJS error:\n\n' + e.toString()); alert('\n        if ($F(\'is_testing_framework_enabled\') != null) {\n          var new_test_support_file_id = new Date().getTime();\n          $(\'test_support_files\').insert({bottom: \&quot;&lt;div class=\\\&quot;test_support_file\\\&quot;&gt;\\n\\n\\n  &lt;label for=\\\&quot;assignment_test_support_files_attributes_0_file_name\\\&quot;&gt;&lt;span class=\\\&quot;translation_missing\\\&quot; title=\\\&quot;translation missing: en.file_name\\\&quot;&gt;File Name&lt;\\/span&gt;&lt;\\/label&gt;\\n\\n\\n  &lt;input id=\\\&quot;assignment_test_support_files_attributes_0_file_name\\\&quot; name=\\\&quot;assignment[test_support_files_attributes][0][file_name]\\\&quot; type=\\\&quot;file\\\&quot; /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;\\n\\n\\n    &lt;a href=\\\&quot;#\\\&quot; onclick=\\\&quot;$(this).up(\\\'.test_support_file\\\').remove(); return false;\\\&quot;&gt;Remove&lt;\\/a&gt;\\n\\n&lt;\\/div&gt;\\n\&quot;.replace(/(attributes_\\d+|\\[\\d+\\])/g, new_test_support_file_id) });\n        } else {\n          alert(\&quot;You must enable tests for this assignment to add a test support file.\&quot;);\n        }\n      '); throw e }; return false;">Add Test Support File</a>
+      </p>
+
+      <h4>Test Script Options</h4>
+      <div id="test_script_options">
+                  <div class="test_script_options">
+
+
+
+  <div id="test_script_70093939534660_options"</div>
+
+    <h3 id="test_script_">
+        rkt_suite_1.rkt Test Script Options
+    </h3>
+
+  <div id="test_script_#{f.object_id}_run_options" width="60%">
+    <label for="assignment_test_scripts_attributes_11_run_settings">Run Settings:</label>
+
+    UPDATE ME: seq_num
+    <input id="assignment_test_scripts_attributes_11_seq_num" name="assignment[test_scripts_attributes][11][seq_num]" size="30" type="number" value="3.0" />
+
+    Maximum marks for script
+    <input id="assignment_test_scripts_attributes_11_max_marks" name="assignment[test_scripts_attributes][11][max_marks]" size="30" type="number" value="100" />
+
+    Run Test On Request
+    <input name="assignment[test_scripts_attributes][11][run_on_request]" type="hidden" value="0" /><input checked="checked" id="assignment_test_scripts_attributes_11_run_on_request" name="assignment[test_scripts_attributes][11][run_on_request]" type="checkbox" value="1" />
+
+    Run Test on Submission:
+    <input name="assignment[test_scripts_attributes][11][run_on_submission]" type="hidden" value="0" /><input id="assignment_test_scripts_attributes_11_run_on_submission" name="assignment[test_scripts_attributes][11][run_on_submission]" type="checkbox" value="1" />
+
+    Halt Testing On Failure
+    <input name="assignment[test_scripts_attributes][11][halts_testing]" type="hidden" value="0" /><input checked="checked" id="assignment_test_scripts_attributes_11_halts_testing" name="assignment[test_scripts_attributes][11][halts_testing]" type="checkbox" value="1" />
+  </div>
+
+  </br>
+  <div id="test_script_#{f.object_id}_display_options" width="60%">
+        <label for="assignment_test_scripts_attributes_11_display_settings">Display Settings:</label>
+        
+    Display Test Description:
+    <select id="assignment_test_scripts_attributes_11_display_description" name="assignment[test_scripts_attributes][11][display_description]"><option value="display_after_submission" selected="selected">Display after submission</option>
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Run Status:
+    <select id="assignment_test_scripts_attributes_11_display_run_status" name="assignment[test_scripts_attributes][11][display_run_status]"><option value="display_after_submission" selected="selected">Display after submission</option>
+
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Marks Earned:
+    <select id="assignment_test_scripts_attributes_11_display_marks_earned" name="assignment[test_scripts_attributes][11][display_marks_earned]"><option value="display_after_submission" selected="selected">Display after submission</option>
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Test Input:
+    <select id="assignment_test_scripts_attributes_11_display_input" name="assignment[test_scripts_attributes][11][display_input]"><option value="display_after_submission" selected="selected">Display after submission</option>
+
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Expected Output
+    <select id="assignment_test_scripts_attributes_11_display_expected_output" name="assignment[test_scripts_attributes][11][display_expected_output]"><option value="display_after_submission" selected="selected">Display after submission</option>
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Actual Ouput
+    <select id="assignment_test_scripts_attributes_11_display_actual_output" name="assignment[test_scripts_attributes][11][display_actual_output]"><option value="display_after_submission" selected="selected">Display after submission</option>
+
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+  </div>
+
+<input id="assignment_test_scripts_attributes_11_id" name="assignment[test_scripts_attributes][11][id]" type="hidden" value="6" />
+</div>
+
+<input id="assignment_test_scripts_attributes_10_id" name="assignment[test_scripts_attributes][10][id]" type="hidden" value="6" />                <div class="test_script_options">
+
+
+
+  <div id="test_script_38311640_options"</div>
+
+    <h3 id="test_script_">
+        rb_suite_1.rb Test Script Options
+    </h3>
+
+  <div id="test_script_#{f.object_id}_run_options" width="60%">
+    <label for="assignment_test_scripts_attributes_13_run_settings">Run Settings:</label>
+
+    UPDATE ME: seq_num
+    <input id="assignment_test_scripts_attributes_13_seq_num" name="assignment[test_scripts_attributes][13][seq_num]" size="30" type="number" value="4.0" />
+
+    Maximum marks for script
+    <input id="assignment_test_scripts_attributes_13_max_marks" name="assignment[test_scripts_attributes][13][max_marks]" size="30" type="number" value="80" />
+
+    Run Test On Request
+    <input name="assignment[test_scripts_attributes][13][run_on_request]" type="hidden" value="0" /><input checked="checked" id="assignment_test_scripts_attributes_13_run_on_request" name="assignment[test_scripts_attributes][13][run_on_request]" type="checkbox" value="1" />
+
+    Run Test on Submission:
+    <input name="assignment[test_scripts_attributes][13][run_on_submission]" type="hidden" value="0" /><input id="assignment_test_scripts_attributes_13_run_on_submission" name="assignment[test_scripts_attributes][13][run_on_submission]" type="checkbox" value="1" />
+
+    Halt Testing On Failure
+    <input name="assignment[test_scripts_attributes][13][halts_testing]" type="hidden" value="0" /><input id="assignment_test_scripts_attributes_13_halts_testing" name="assignment[test_scripts_attributes][13][halts_testing]" type="checkbox" value="1" />
+  </div>
+
+  </br>
+  <div id="test_script_#{f.object_id}_display_options" width="60%">
+        <label for="assignment_test_scripts_attributes_13_display_settings">Display Settings:</label>
+        
+    Display Test Description:
+    <select id="assignment_test_scripts_attributes_13_display_description" name="assignment[test_scripts_attributes][13][display_description]"><option value="display_after_submission" selected="selected">Display after submission</option>
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Run Status:
+    <select id="assignment_test_scripts_attributes_13_display_run_status" name="assignment[test_scripts_attributes][13][display_run_status]"><option value="display_after_submission" selected="selected">Display after submission</option>
+
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Marks Earned:
+    <select id="assignment_test_scripts_attributes_13_display_marks_earned" name="assignment[test_scripts_attributes][13][display_marks_earned]"><option value="display_after_submission" selected="selected">Display after submission</option>
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Test Input:
+    <select id="assignment_test_scripts_attributes_13_display_input" name="assignment[test_scripts_attributes][13][display_input]"><option value="display_after_submission" selected="selected">Display after submission</option>
+
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Expected Output
+    <select id="assignment_test_scripts_attributes_13_display_expected_output" name="assignment[test_scripts_attributes][13][display_expected_output]"><option value="display_after_submission" selected="selected">Display after submission</option>
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Actual Ouput
+    <select id="assignment_test_scripts_attributes_13_display_actual_output" name="assignment[test_scripts_attributes][13][display_actual_output]"><option value="display_after_submission" selected="selected">Display after submission</option>
+
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+  </div>
+
+<input id="assignment_test_scripts_attributes_13_id" name="assignment[test_scripts_attributes][13][id]" type="hidden" value="7" />
+</div>
+
+<input id="assignment_test_scripts_attributes_12_id" name="assignment[test_scripts_attributes][12][id]" type="hidden" value="7" />                <div class="test_script_options">
+
+
+
+  <div id="test_script_40723460_options"</div>
+
+    <h3 id="test_script_">
+        rb_suite_2.rb Test Script Options
+    </h3>
+
+  <div id="test_script_#{f.object_id}_run_options" width="60%">
+    <label for="assignment_test_scripts_attributes_15_run_settings">Run Settings:</label>
+
+    UPDATE ME: seq_num
+    <input id="assignment_test_scripts_attributes_15_seq_num" name="assignment[test_scripts_attributes][15][seq_num]" size="30" type="number" value="6.0" />
+
+    Maximum marks for script
+    <input id="assignment_test_scripts_attributes_15_max_marks" name="assignment[test_scripts_attributes][15][max_marks]" size="30" type="number" value="90" />
+
+    Run Test On Request
+    <input name="assignment[test_scripts_attributes][15][run_on_request]" type="hidden" value="0" /><input checked="checked" id="assignment_test_scripts_attributes_15_run_on_request" name="assignment[test_scripts_attributes][15][run_on_request]" type="checkbox" value="1" />
+
+    Run Test on Submission:
+    <input name="assignment[test_scripts_attributes][15][run_on_submission]" type="hidden" value="0" /><input id="assignment_test_scripts_attributes_15_run_on_submission" name="assignment[test_scripts_attributes][15][run_on_submission]" type="checkbox" value="1" />
+
+    Halt Testing On Failure
+    <input name="assignment[test_scripts_attributes][15][halts_testing]" type="hidden" value="0" /><input id="assignment_test_scripts_attributes_15_halts_testing" name="assignment[test_scripts_attributes][15][halts_testing]" type="checkbox" value="1" />
+  </div>
+
+  </br>
+  <div id="test_script_#{f.object_id}_display_options" width="60%">
+        <label for="assignment_test_scripts_attributes_15_display_settings">Display Settings:</label>
+        
+    Display Test Description:
+    <select id="assignment_test_scripts_attributes_15_display_description" name="assignment[test_scripts_attributes][15][display_description]"><option value="display_after_submission" selected="selected">Display after submission</option>
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Run Status:
+    <select id="assignment_test_scripts_attributes_15_display_run_status" name="assignment[test_scripts_attributes][15][display_run_status]"><option value="display_after_submission" selected="selected">Display after submission</option>
+
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Marks Earned:
+    <select id="assignment_test_scripts_attributes_15_display_marks_earned" name="assignment[test_scripts_attributes][15][display_marks_earned]"><option value="display_after_submission" selected="selected">Display after submission</option>
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Test Input:
+    <select id="assignment_test_scripts_attributes_15_display_input" name="assignment[test_scripts_attributes][15][display_input]"><option value="display_after_submission" selected="selected">Display after submission</option>
+
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Expected Output
+    <select id="assignment_test_scripts_attributes_15_display_expected_output" name="assignment[test_scripts_attributes][15][display_expected_output]"><option value="display_after_submission" selected="selected">Display after submission</option>
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Actual Ouput
+    <select id="assignment_test_scripts_attributes_15_display_actual_output" name="assignment[test_scripts_attributes][15][display_actual_output]"><option value="display_after_submission" selected="selected">Display after submission</option>
+
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+  </div>
+
+<input id="assignment_test_scripts_attributes_15_id" name="assignment[test_scripts_attributes][15][id]" type="hidden" value="8" />
+</div>
+
+<input id="assignment_test_scripts_attributes_14_id" name="assignment[test_scripts_attributes][14][id]" type="hidden" value="8" />                <div class="test_script_options">
+
+
+
+  <div id="test_script_70093972398160_options"</div>
+
+    <h3 id="test_script_">
+        rb_suite_3.rb Test Script Options
+    </h3>
+
+  <div id="test_script_#{f.object_id}_run_options" width="60%">
+    <label for="assignment_test_scripts_attributes_17_run_settings">Run Settings:</label>
+
+    UPDATE ME: seq_num
+    <input id="assignment_test_scripts_attributes_17_seq_num" name="assignment[test_scripts_attributes][17][seq_num]" size="30" type="number" value="9.0" />
+
+    Maximum marks for script
+    <input id="assignment_test_scripts_attributes_17_max_marks" name="assignment[test_scripts_attributes][17][max_marks]" size="30" type="number" value="23" />
+
+    Run Test On Request
+    <input name="assignment[test_scripts_attributes][17][run_on_request]" type="hidden" value="0" /><input checked="checked" id="assignment_test_scripts_attributes_17_run_on_request" name="assignment[test_scripts_attributes][17][run_on_request]" type="checkbox" value="1" />
+
+    Run Test on Submission:
+    <input name="assignment[test_scripts_attributes][17][run_on_submission]" type="hidden" value="0" /><input id="assignment_test_scripts_attributes_17_run_on_submission" name="assignment[test_scripts_attributes][17][run_on_submission]" type="checkbox" value="1" />
+
+    Halt Testing On Failure
+    <input name="assignment[test_scripts_attributes][17][halts_testing]" type="hidden" value="0" /><input id="assignment_test_scripts_attributes_17_halts_testing" name="assignment[test_scripts_attributes][17][halts_testing]" type="checkbox" value="1" />
+  </div>
+
+  </br>
+  <div id="test_script_#{f.object_id}_display_options" width="60%">
+        <label for="assignment_test_scripts_attributes_17_display_settings">Display Settings:</label>
+        
+    Display Test Description:
+    <select id="assignment_test_scripts_attributes_17_display_description" name="assignment[test_scripts_attributes][17][display_description]"><option value="display_after_submission" selected="selected">Display after submission</option>
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Run Status:
+    <select id="assignment_test_scripts_attributes_17_display_run_status" name="assignment[test_scripts_attributes][17][display_run_status]"><option value="display_after_submission" selected="selected">Display after submission</option>
+
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Marks Earned:
+    <select id="assignment_test_scripts_attributes_17_display_marks_earned" name="assignment[test_scripts_attributes][17][display_marks_earned]"><option value="display_after_submission" selected="selected">Display after submission</option>
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Test Input:
+    <select id="assignment_test_scripts_attributes_17_display_input" name="assignment[test_scripts_attributes][17][display_input]"><option value="display_after_submission" selected="selected">Display after submission</option>
+
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Expected Output
+    <select id="assignment_test_scripts_attributes_17_display_expected_output" name="assignment[test_scripts_attributes][17][display_expected_output]"><option value="display_after_submission" selected="selected">Display after submission</option>
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+
+    Display Actual Ouput
+    <select id="assignment_test_scripts_attributes_17_display_actual_output" name="assignment[test_scripts_attributes][17][display_actual_output]"><option value="display_after_submission" selected="selected">Display after submission</option>
+
+<option value="display_after_collection">Display after collection</option>
+<option value="do_not_display">Do not display</option></select>
+  </div>
+
+<input id="assignment_test_scripts_attributes_17_id" name="assignment[test_scripts_attributes][17][id]" type="hidden" value="9" />
+</div>
+
+<input id="assignment_test_scripts_attributes_16_id" name="assignment[test_scripts_attributes][16][id]" type="hidden" value="9" />      </div>
+
+    </div>
+  </fieldset>
+
+</fieldset>
+
+<input data-disable-with="Working..." id="assignment_submit" name="commit" type="submit" value="Submit" />
+</form></div>
+
+
+      </div> <!-- content -->
+    </div> <!-- container -->
+  </div>
+
+</body>
+</html>
+
+

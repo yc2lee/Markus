@@ -1,0 +1,59 @@
+<testrun>
+<test_script>
+<script_name>py_suite_1.py</script_name>
+<test>
+     <name>Normal Hello</name>
+     <input>Bob</input>
+     <expected>Hello Bob</expected>
+     <actual>Hello Bob</actual>
+     <marks_earned>1</marks_earned>
+     <status>pass</status>
+     </test>
+<test>
+     <name>Empty Hello</name>
+     <input></input>
+     <expected>Hello </expected>
+     <actual>Hello </actual>
+     <marks_earned>2</marks_earned>
+     <status>pass</status>
+     </test>
+<test>
+     <name>Wrong Answer</name>
+     <input>Bob</input>
+     <expected>Hello Bob</expected>
+     <actual>This-is-rigged</actual>
+     <marks_earned>0</marks_earned>
+     <status>fail</status>
+     </test>
+
+</test_script>
+<test_script>
+<script_name>py_suite_2.py</script_name>
+<test>
+             <name>Normal Hello</name>
+             <input>Bob</input>
+             <status>pass</status>
+             </test>
+<test>
+             <name>Empty Hello</name>
+             <input></input>
+             <status>pass</status>
+             </test>
+<test>
+             <name>Wrong Answer</name>
+             <input>Bob</input>
+             <status>false</status>
+             </test>
+
+<marks_earned>1</marks_earned>
+</test_script>
+<test_script>
+<script_name>py_suite_3.py</script_name>
+<test>
+     <name>Question 3</name>
+     <status>fail</status>
+     </test>
+
+<marks_earned>0</marks_earned>
+</test_script>
+</testrun>
