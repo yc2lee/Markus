@@ -4,6 +4,7 @@ require 'open3'
 # Helper methods for Testing Framework forms
 module AutomatedTestsHelper
   include LibXML
+  include Resque::Plugins::Status
 
   # This is the waiting list for automated testing. Once a test is requested,
   # it is enqueued and it is waiting for execution. Resque manages this queue.
@@ -158,6 +159,18 @@ module AutomatedTestsHelper
   def self.perform(submission_id, call_on) 
     # Pick a server, launch the Test Runner and wait for the result
     # Then store the result into the database
+
+
+
+    puts "------------------------------------------------------------------"    
+    puts
+    puts submission_id.inspect
+    puts call_on.inspect
+    puts
+    puts "------------------------------------------------------------------"    
+
+    submission_id = call_on["submission_id"]
+    call_on = call_on["call_on"]
   
     @submission = Submission.find(submission_id)
     @grouping = @submission.grouping
