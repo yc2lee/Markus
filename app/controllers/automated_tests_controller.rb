@@ -108,4 +108,14 @@ class AutomatedTestsController < ApplicationController
     end
   end
 
+  def action
+    # Normally, without resque-status, we do this
+    # Resque.enqueue(ResqueClass, 9999)
+
+    # But with the resque-status, we have to do this instead
+    #job_id = ResqueClass.create(:message => ' I like bananas. ')
+    #render :text=>"job_id = #{job_id}<br>Resque.redis: #{Resque.info}"
+    redis = Resque.redis
+
+  end
 end

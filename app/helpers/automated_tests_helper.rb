@@ -4,7 +4,7 @@ require 'open3'
 # Helper methods for Testing Framework forms
 module AutomatedTestsHelper
   include LibXML
-  include Resque::Plugins::Status
+  #include Resque::Plugins::Status
 
   # This is the waiting list for automated testing. Once a test is requested,
   # it is enqueued and it is waiting for execution. Resque manages this queue.

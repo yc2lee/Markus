@@ -1,0 +1,26 @@
+class ResqueClass
+
+
+  @queue = :resque_class
+
+  def at(num, total, *messages)
+  end
+
+  def self.perform(uuid, options)
+    puts
+    puts 'performing...'
+    puts "uuid = #{uuid}"
+    puts "options = #{options}"
+    puts
+
+    total = 1000
+    num = 0
+    while num < total
+      at(num, total, "At #{num} of #{total}")
+      sleep(1)
+      num += 1
+    end
+  end
+end
+
+

@@ -79,6 +79,7 @@ Markus::Application.routes.draw do
         post 'upload'
         get 'download'
         get 'move_criterion'
+        get 'action'
       end
     end
 
