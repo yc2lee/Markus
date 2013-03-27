@@ -1,23 +1,19 @@
 class ResqueClass
   include Resque::Plugins::Status
 
-  @@mycounter = 0
-  cattr_accessor :mycounter
-
   def self.queue
     :resque_class
   end
 
+  # calling sequence
+  # j = ResqueClass.create(:length => 32)
   def perform
     puts "#{options.inspect}"
-    time = options["length"]
-    if time.nil?
-      time = 90
-    end
-    @@mycounter += 1
-    1.upto(90).each do |x|
+    time = options["length"] || 90
+
+    1.upto(time).each do |x|
       sleep 1
-      at(x, 90, "Howdy! The count is at #{@@mycounter}.")
+      at(x, time, "Howdy! My UUID is #{@uuid}")
     end
     completed("Finished!")
   end

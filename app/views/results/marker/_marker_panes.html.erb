@@ -48,9 +48,9 @@
       	  
       <ul>
       <% test_script_results.each do |ts_result| %>
-      	<% test_script = TestScript.find(ts_result.test_script_id) %>
+      	<% test_script = TestScript.find_by_id(ts_result.test_script_id) %>
       	<li>
-      	  Script name: <%= test_script.script_name %>
+      	  Script name: <%= test_script.nil? ? "test script deleted" : test_script.script_name %>
       	  <ul>
       	  <li>Marks earned: <%= ts_result.marks_earned %></li>
       	  <% test_results = TestResult.find_all_by_submission_id_and_test_script_id(ts_result.submission_id, ts_result.test_script_id) %>

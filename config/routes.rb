@@ -79,7 +79,12 @@ Markus::Application.routes.draw do
         post 'upload'
         get 'download'
         get 'move_criterion'
-        get 'action'
+
+        get 'myrequest'
+        get 'myview'
+        get 'mydequeue'
+        get 'dumpkeys'
+        get 'resqueclass'
       end
     end
 

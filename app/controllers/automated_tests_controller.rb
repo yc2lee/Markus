@@ -108,14 +108,60 @@ class AutomatedTestsController < ApplicationController
     end
   end
 
-  def action
+  def username
+    params['username'] || 'demostudent'
+  end
+
+  def myrequest
     # Normally, without resque-status, we do this
     # Resque.enqueue(ResqueClass, 9999)
 
     # But with the resque-status, we have to do this instead
     #job_id = ResqueClass.create(:message => ' I like bananas. ')
     #render :text=>"job_id = #{job_id}<br>Resque.redis: #{Resque.info}"
-    redis = Resque.redis
 
+    redis = Redis.new
+    x = redis.incr "markus:test_run_ticketing:ticket"
+
+    key = "markus:test_run_ticketing:#{username}"
+    redis.set key, x
+    redis.expire key, 3600
+    redis.rpush "markus:queue_demo", username
+    render :text => "DB now has key <b>#{key}</b> with value <b>#{redis.get key}</b>"
+
+  end
+
+
+  def myview
+    redis = Redis.new
+    key = "markus:test_run_ticketing:#{username}"
+    s = "You have key <b>#{key}</b> with value <b>#{redis.get key}</b>"  
+    render :text => s
+  end
+
+  def mydequeue
+    redis.rpush "markus:queue_demo", username
+    redis = Redis.new
+    x = redis.incr "markus:test_run_ticketing:serving"
+    render :text => "Now serving ticket #{redis.get "markus:test_run_ticketing:serving"}"
+  end
+
+  def dumpkeys
+    i = 1
+    s = ''
+    redis = Redis.new
+    redis.keys("*").each do |key|
+      type = redis.type key
+      if type == 'string'
+        s += "#{i}) #{key} =====> #{redis.get key}<br>\n"
+        i += 1
+      end
+    end
+    render :text => s
+  end
+
+  def resqueclass
+    j = ResqueClass.create(:length => 32)
+    render :text => "job id is #{j}"
   end
 end
